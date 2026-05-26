@@ -1,6 +1,7 @@
 package com.example.parcial2.service;
 
 import com.example.parcial2.domain.dto.request.BookDTORequest;
+import com.example.parcial2.domain.dto.response.BookDTOResponse;
 import com.example.parcial2.domain.entities.Book;
 import com.example.parcial2.repository.BookRepository;
 import com.example.parcial2.utils.bookMapper;
@@ -20,5 +21,13 @@ public class BookService {
 
     public List<Book> findAllBook(){
         return bookRepository.findAll();
+    }
+
+    public BookDTOResponse findBookById(int id){
+        return bookMapper.toResponse(bookRepository.findById(id).get());
+    }
+
+    public void deleteBookById(int id){
+        bookRepository.deleteById(id);
     }
 }

@@ -29,4 +29,13 @@ public class BookController {
                 .message("Libros encontrados")
                 .build());
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<GeneralResponse> deleteBook(@PathVariable int id) {
+        bookService.deleteBookById(id);
+        return ResponseEntity.ok(GeneralResponse.builder()
+                .data(bookService.findBookById(id))
+                .message("Libro eliminado")
+                .build());
+    }
 }
