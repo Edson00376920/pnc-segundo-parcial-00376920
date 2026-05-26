@@ -5,10 +5,8 @@ import com.example.parcial2.domain.dto.request.BookDTORequest;
 import com.example.parcial2.service.BookService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 @RestController
 @RequestMapping("/api/books")
 @AllArgsConstructor
@@ -23,4 +21,12 @@ public class BookController {
                 .message("Libro ha sido creado")
                 .build());
 
+}
+    @GetMapping
+    public ResponseEntity<GeneralResponse> findAll(){
+        return ResponseEntity.ok(GeneralResponse.builder()
+                .data(bookService.findAllBook())
+                .message("Libros encontrados")
+                .build());
+    }
 }
