@@ -9,7 +9,7 @@ public record BookDTORequest(
         String title,
         String author,
         String isbn,
-        Enum genre,
+        //Enum genre, comentado por error
         Integer totalCopies,
         Integer availableCopies,
         Boolean available,
